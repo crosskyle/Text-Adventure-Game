@@ -25,7 +25,7 @@ GenericSpace.o: GenericSpace.cpp
 	clang++ -std=c++11 -stdlib=libc++ -c GenericSpace.cpp
 
 gamePlay.o: gamePlay.cpp
-   clang++ -std=c++11 -stdlib=libc++ -c gamePlay.cpp
+	clang++ -std=c++11 -stdlib=libc++ -c gamePlay.cpp
 
 Player.o: Player.cpp
 	clang++ -std=c++11 -stdlib=libc++ -c Player.cpp

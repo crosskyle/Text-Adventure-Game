@@ -32,7 +32,7 @@ void Player::addItem(string itemIn)
    //Does nothing if backpack is full
    if (backpackSize == backpackFull)
    {
-      cout << "Backpack full." << endl;
+      cout << "Backpack full.\n";
    }
    //Adds item
    else if (itemIn != "")
@@ -44,7 +44,7 @@ void Player::addItem(string itemIn)
    }
    else
    {
-      cout << "Nothing picked up." << endl;
+      cout << "Nothing picked up.\n";
    }
 }
 
@@ -106,17 +106,16 @@ void Player::displayBackpack()
    //Displays if not empty
    if (backpackSize == 0)
    {
-      cout << "Backpack is empty." << endl;
+      cout << "Backpack is empty.\n";
    }
    else
    {
-      cout << "\nBackpack items:" << endl;
+      cout << "\nBackpack items:\n";
       
       for (int i = 0; i < (static_cast<int>(backpack.size())); i++)
       {
          cout << backpack[i] << endl;
       }
-      cout << endl;
    }
 }
 

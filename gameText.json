@@ -1,22 +1,44 @@
 {
-   "menu": "(M)ove.\n(P)ick up an item.\n(D)eposit a pollen grain.\n(S)how backpack.\n(L)earn how to win.\n(Q)uit.\n",
-   "start": {
-      "instructions1": "Welcome to the beehive! You are an ant trying to find honey to bring back to your starving ant colony. You have carried pollen along as a gift to be given to the bees in each room so that they will help you find honey in return. You only have 10 pollen grains and 20 moves. Use your resources wisely. Your journey starts in the arcade room.\n \nFirst hint: the dining hall has some jelly that only royalty eats. Good luck!\n",
-      "instructions2": "A bee wants to make a wager. It will show you a secret tunnel network if you win the bet. Give it one pollen and you have a 50% chance that you'll have access to the secret tunnels. The tunnels will let you go straight to the dining hall and queen lair. If you lose the bet, You'll lose 5 total pollen grains. Or move on instead.\n\n"
-   },
-   "choose direction": "Which direction would you like to move?\n(N)orth, (S)outh, (E)ast, or (W)est?\n",
-   "ending": {
-      "1": "Too many moves. A bear ate the whole beehive!\n",
-      "2": "You lost. The bug spray you picked up killed all of the bees.\n\n"
+   "menu": "\n(M)ove.\n(P)ick up an item.\n(D)eposit a pollen grain.\n(S)how backpack.\n(L)earn how to win.\n(Q)uit.\n",
+   "start": "Welcome to the beehive! You are an ant trying to find honey to bring back to your starving ant colony. You have carried pollen along as a gift to be given to the bees in each room so that they will help you find honey in return. You only have 10 pollen grains and 20 moves. Use your resources wisely. Your journey starts in the arcade room.\n \nFirst hint: the dining hall has some jelly that only royalty eats. Good luck!\n",
+   "choose direction": "\nWhich direction would you like to move?\n(N)orth, (S)outh, (E)ast, or (W)est?\n",
+   "lost": {
+      "1": "\nToo many moves. A bear ate the whole beehive!\n",
+      "2": "\nYou lost. The bug spray you picked up killed all of the bees.\n",
+      "3": "\nYou lost all of your pollen. You lost.\n"
    },
    "arcade": {
-      "1": "A bee wants to make a wager. It will show you a secret tunnel network if you win the bet. Give it one pollen grain and you have a 50% chance that you'll have access to the secret tunnels. The tunnels will let you go straight to the dining hall and queen lair. If you lose the bet, You'll lose 5 total pollen grains.\n",
-      "2": "\nYou unlocked a secret passage to the Queen lair and dining hall. Go north to find the queen lair or go west to find the dining hall. There is also a tunnel going east and west between the dining hall and Queen lair.\n"
+      "1": "\nA bee wants to make a wager. It will show you a secret tunnel network if you win the bet. Give it one pollen grain and you have a 50% chance that you'll have access to the secret tunnels. The tunnels will let you go straight to the dining hall and queen lair. If you lose the bet, You'll lose 5 total pollen grains.\n",
+      "2": "\nYou unlocked a secret passage to the Queen lair and dining hall. Go north to find the queen lair or go west to find the dining hall. There is also a tunnel going east and west between the dining hall and Queen lair.\n",
+      "3": "\nYou lost pollen.\n",
+      "4": "\nStarting Location: Arcade\n\nA bee wants to make a wager. It will show you a secret tunnel network if you win the bet. Give it one pollen and you have a 50% chance that you'll have access to the secret tunnels. The tunnels will let you go straight to the dining hall and queen lair. If you lose the bet, You'll lose 5 total pollen grains. Or move on instead.\n"
+   },
+   "dance room": {
+      "1": "\n'If you give us 2 pollen grains we'll open the doors to the queen lair!'\n",
+      "2": "\nYou have unlocked the doors to the Queen lair!\n"
+   },
+   "dining hall": {
+      "1": "\n'If you deposit one pollen grain, we'll let you pick up something the queen might like.'\n",
+      "2": "\nPick up the royal jelly.\n"
+   },
+   "graveyard": {
+      "1": "\nYou used your key to open the door to the worker bees! The passage to the worker bees has opened. Go east.\n"
    },
    "wager": {
-      "1": "A bee wants to make a wager. It will give you a key to the worker bee lair if you win the bet. Deposit one pollen grain and you have a 10% chance that you'll have access to the worker bee lair where the honey is stored. Be careful! Pollen is a non-renewable resource.\n\n"
+      "1": "\nA bee wants to make a wager. It will give you a key to the worker bee lair if you win the bet. Deposit one pollen grain and you have a 10% chance that you'll have access to the worker bee lair where the honey is stored. Be careful! Pollen is a non-renewable resource.\n",
+      "2": "\nYou won the bet! You were given a key to access the worker bee lair from the graveyard!\nWait! The beehive is shaking!!! A hungry bear ate the dance room!!!\n",
+      "3": "\nYou lost the bet.\n"
+   },
+   "queen lair": {
+      "1": "\nThe queen took your royal jelly and gave you a key. The key works where bees go to die. \n'You must give some honey to the brood before you leave the beehive.'\n\nWait! The beehive is shaking!!! A hungry bear ate the dance room!!!\n",
+      "2": "\n'I need royal jelly. Can you find some for me?'\n"
+   },
+   "worker bee lair": {
+      "1": "\n'Here's some honey! Give some to the brood before you leave.'\nGo north to reach the brood.\n"
    },
    "hint": {
-      "1": "\"Some bees are dancing to find where the pollen is at. They would love some of your pollen. They might let you see the Queen if you give them some.\"\n"
-   }
+      "1": "\n'Some bees are dancing to find where the pollen is at. They would love some of your pollen. They might let you see the Queen if you give them some.'\n"
+   },
+   "cheat": "\nDISCLAIMER: This tells you how to win.\nGo to the dining hall. Deposit one pollen grain. Then pickup an item there. Next go to the dance room and deposit two pollen grains. The queen lair will become unlocked. Next go to the queen lair. The queen gave you a key. Go to the graveyard. Your key opened the worker bee lair. Next go east to the worker bee lair. You were given honey. Go north to the brood lair to win.\n",
+   "won": "\n'Thanks for the honey!'\nYou saved your ant colony!!!\n"
 }
