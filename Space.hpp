@@ -5,7 +5,7 @@
  ** Description: The declaration of an abstract class Space. Each space has four
  ** pointers to other spaces. Each space holds a special function where
  ** an ant is able to deposit pollen and a special action occurs.
- ** Input: Pointer to each space are set in a different class that has
+ ** Input: Pointers to each space are set in a different class that has
  ** spaces. There is also a bool parameter for the special function.
  ** Output: Pointers to spaces are returned, the names of the spaces and
  ** items the spaces hold are returned, and several boolean variables are

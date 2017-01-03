@@ -210,7 +210,7 @@ bool Beehive::move(char moveIn)
    }
    else
    {
-      cout << "\nDoor is locked." << endl;
+      cout << "\nDOOR IS LOCKED." << endl;
    }
    
    //Determines if any turns are left

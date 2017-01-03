@@ -40,5 +40,6 @@
       "1": "\n'Some bees are dancing to find where the pollen is at. They would love some of your pollen. They might let you see the Queen if you give them some.'\n"
    },
    "cheat": "\nDISCLAIMER: This tells you how to win.\nGo to the dining hall. Deposit one pollen grain. Then pickup an item there. Next go to the dance room and deposit two pollen grains. The queen lair will become unlocked. Next go to the queen lair. The queen gave you a key. Go to the graveyard. Your key opened the worker bee lair. Next go east to the worker bee lair. You were given honey. Go north to the brood lair to win.\n",
-   "won": "\n'Thanks for the honey!'\nYou saved your ant colony!!!\n"
+   "won": "\n'Thanks for the honey!'\nYou saved your ant colony!!!\n",
+   "displayWorld": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|_____  ____|____  _____|\n|           |           |\n|Dance Room   Graveyard |\n|_____  ____|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n"
 }

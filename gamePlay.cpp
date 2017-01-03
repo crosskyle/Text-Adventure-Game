@@ -4,21 +4,6 @@
 
 
 
-void GamePlay::printWorld() {
-   cout << " _______________________\n";
-   cout << "|           |           |\n";
-   cout << "|   Arcade    Brood lair|\n";
-   cout << "|_____  ____|____  _____|\n";
-   cout << "|           |           |\n";
-   cout << "|Dance Room   Graveyard |\n";
-   cout << "|_____  ____|____  _____|\n";
-   cout << "|           |           |\n";
-   cout << "|Queen lair  Dining hall|\n";
-   cout << "|___________|___________|\n";
-}
-
-
-
 string GamePlay::parse(string stringIn) {
    string s = stringIn;
    s.erase(remove(s.begin(), s.end(), '\"'), s.end());
@@ -28,8 +13,9 @@ string GamePlay::parse(string stringIn) {
 
 
 
-char GamePlay::chooseMenuOption(char &choice) {
+char GamePlay::getMenuOption(char &choice, json j) {
    //Menu option is chosen
+   cout << parse(j["menu"]);
    cin.clear();
    cin >> choice;
    choice = toupper(choice);
@@ -45,6 +31,21 @@ char GamePlay::chooseMenuOption(char &choice) {
    }
    
    return choice;
+}
+
+
+
+char GamePlay::getDirection(char &move, json j) {
+   do
+   {
+      cin.ignore(10000,'\n');
+      cout << parse(j["choose direction"]);
+      cin >> move;
+      move = toupper(move);
+      
+   } while (!cin || (move != 'N' && move != 'S' && move != 'E' && move != 'W'));
+
+   return move;
 }
 
 
@@ -64,34 +65,25 @@ void GamePlay::playGame() {
    json j;
    gameText >> j;
    
-   char choice;                                    //Holds menu choice
-   char move;                                      //Holds move direction
-   
    //Starting instructions
    cout << parse(j["start"]);
-   printWorld();                                   //Prints world map
-   cout << parse(j["arcade"]["4"]);                //Start in arcade room
+   cout << parse(j["displayWorld"]);                     //Prints world map
+   cout << parse(j["arcade"]["4"]);                      //Start in arcade room
    
-   cout << parse(j["menu"]);
-   chooseMenuOption(choice);
+   //Choose menu option
+   getMenuOption(choice, j);
    
    //User-controlled while loop
    while (choice != 'Q')
    {
-      //Move to a space
+      /*************************/
+      /**** Move to a space ****/
+      /*************************/
       if (choice == 'M')
       {
-         printWorld();
+         cout << parse(j["displayWorld"]);
          
-         //User inputs direction until valid
-         do
-         {
-            cin.ignore(10000,'\n');
-            cout << parse(j["choose direction"]);
-            cin >> move;
-            move = toupper(move);
-            
-         } while (!cin || (move != 'N' && move != 'S' && move != 'E' && move != 'W'));
+         getDirection(move, j);
          
          //Game ends if too many moves taken
          if (play.move(move))
@@ -173,7 +165,9 @@ void GamePlay::playGame() {
          }
       }
       
-      //Pick up an item
+      /*************************/
+      /**** Pick up an item ****/
+      /*************************/
       else if (choice == 'P')
       {
          play.pickupSpaceItem();                            //Item is picked up
@@ -185,7 +179,9 @@ void GamePlay::playGame() {
          }
       }
       
-      //Deposit pollen
+      /************************/
+      /**** Deposit pollen ****/
+      /************************/
       else if (choice == 'D')
       {
          play.dropPollen();                                 //Pollen is deposited
@@ -243,20 +239,23 @@ void GamePlay::playGame() {
          cout << "\nPollen left: " << play.getPollenCount() << endl;
       }
       
-      //Show backpack items
+      /**********************************/
+      /***** Display backpack items *****/
+      /**********************************/
       else if (choice == 'S')
       {
          play.displayItems();
       }
       
-      //Tells you how to win
+      /*********************************/
+      /****** Explains how to win ******/
+      /*********************************/
       else if ( choice == 'L')
       {
          cout << parse(j["cheat"]);
       }
       
       //User chooses menu option
-      cout << parse(j["menu"]);
-      chooseMenuOption(choice);
+      getMenuOption(choice, j);
    }
 }

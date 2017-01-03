@@ -2,19 +2,19 @@
 
 #include "Beehive.hpp"
 #include "json.hpp"
+#include <fstream>
 using json = nlohmann::json;
 
-#include <iostream>
-#include <fstream>
-#include <string>
 
 class GamePlay
 {
 private:
+   char choice;
+   char move;
    Beehive play;
    string parse(string stringIn);
-   char chooseMenuOption(char &choice);
-   void printWorld();
+   char getMenuOption(char &choice, json j);
+   char getDirection(char &move, json j);
    
 public:
    void playGame();
