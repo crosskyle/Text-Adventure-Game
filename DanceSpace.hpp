@@ -19,7 +19,7 @@ class DanceSpace : public Space
 private:
    int depositCount;                   //Holds number of times function was called
 public:
-   DanceSpace(string spaceNameIn, string itemIn) : Space(spaceNameIn, itemIn)
+   DanceSpace(std::string spaceNameIn, std::string itemIn) : Space(spaceNameIn, itemIn)
    {
       depositCount = 0;
    }

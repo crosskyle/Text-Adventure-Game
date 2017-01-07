@@ -27,12 +27,12 @@ Player::Player()
  ** Description: Adds item to backpack vector.
  *********************************************************************/
 
-void Player::addItem(string itemIn)
+void Player::addItem(std::string itemIn)
 {
    //Does nothing if backpack is full
    if (backpackSize == backpackFull)
    {
-      cout << "Backpack full.\n";
+      std::cout << "Backpack full.\n";
    }
    //Adds item
    else if (itemIn != "")
@@ -44,7 +44,7 @@ void Player::addItem(string itemIn)
    }
    else
    {
-      cout << "Nothing picked up.\n";
+      std::cout << "Nothing picked up.\n";
    }
 }
 
@@ -53,7 +53,7 @@ void Player::addItem(string itemIn)
  ** Description: Searches for item and removes it.
  *********************************************************************/
 
-void Player::removeItem(string itemIn)
+void Player::removeItem(std::string itemIn)
 {
    if (backpackSize != 0)
    {
@@ -75,7 +75,7 @@ void Player::removeItem(string itemIn)
  ** Description: Searches for item and returns if found.
  *********************************************************************/
 
-bool Player::searchItem(string itemIn)
+bool Player::searchItem(std::string itemIn)
 {
    //Doesn't search if empty
    if (backpackSize == 0)
@@ -106,15 +106,15 @@ void Player::displayBackpack()
    //Displays if not empty
    if (backpackSize == 0)
    {
-      cout << "Backpack is empty.\n";
+      std::cout << "Backpack is empty.\n";
    }
    else
    {
-      cout << "\nBackpack items:\n";
+      std::cout << "\nBackpack items:\n";
       
       for (int i = 0; i < (static_cast<int>(backpack.size())); i++)
       {
-         cout << backpack[i] << endl;
+         std::cout << backpack[i] << std::endl;
       }
    }
 }

@@ -20,13 +20,12 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-using namespace std;
 
 class Space
 {
 protected:
-   string spaceName;                      //Name of space
-   string item;                           //Name of item space holds
+   std::string spaceName;                 //Name of space
+   std::string item;                      //Name of item space holds
    bool deposit;                          //Determines what value special function returns
    Space *east;                           //Pointers to other spaces
    Space *west;
@@ -34,7 +33,7 @@ protected:
    Space *south;
    
 public:
-   Space(string spaceNameIn, string itemIn);
+   Space(std::string spaceNameIn, std::string itemIn);
    void setEast(Space* spaceIn);
    void setWest(Space* spaceIn);
    void setNorth(Space* spaceIn);
@@ -43,8 +42,8 @@ public:
    Space* getWest();
    Space* getNorth();
    Space* getSouth();
-   string getName();
-   string getItem();
+   std::string getName();
+   std::string getItem();
    bool getDeposit();
    virtual bool depositPollen() = 0;
    virtual ~Space() {}

@@ -16,7 +16,7 @@
 class GenericSpace : public Space
 {
 public:
-   GenericSpace(string spaceNameIn, string itemIn) : Space(spaceNameIn, itemIn) {}
+   GenericSpace(std::string spaceNameIn, std::string itemIn) : Space(spaceNameIn, itemIn) {}
    bool depositPollen();
 };
 

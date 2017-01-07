@@ -18,12 +18,11 @@
 #include <vector>
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Player
 {
 private:
-   vector<string> backpack;                  //Holds items added
+   std::vector<std::string> backpack;        //Holds items added
    int backpackFull;                         //Capacity of backpack
    int backpackSize;                         //Position in vector
    int pollen;                               //Holds number of pollen grains left
@@ -31,9 +30,9 @@ private:
    
 public:
    Player();
-   void addItem(string itemIn);
-   void removeItem(string itemIn);
-   bool searchItem(string itemIn);
+   void addItem(std::string itemIn);
+   void removeItem(std::string itemIn);
+   bool searchItem(std::string itemIn);
    void displayBackpack();
    void decrementPollen();
    int getPollen();

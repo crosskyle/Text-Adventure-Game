@@ -49,16 +49,16 @@ public:
    bool getBearAte() { return bearAteSpace; }
    bool getQueenDoor() { return queenDoor; }
    bool getKeyUsed() { return keyUsed; }
-   string getLocation() { return playerLoc->getName(); }
+   std::string getLocation() { return playerLoc->getName(); }
    bool move(char moveIn);
    void dropPollen();
    bool hasDepositedPollen() { return playerLoc->getDeposit(); }
    int getPollenCount() { return player.getPollen(); }
    void pickupSpaceItem() { player.addItem(playerLoc->getItem()); }
    void displayItems() { player.displayBackpack(); }
-   void removeBackpackItem(string itemIn) { player.removeItem(itemIn); }
-   bool searchBackpackItem(string itemIn) { return player.searchItem(itemIn); }
-   void pickupItem(string itemIn) { player.addItem(itemIn); }
+   void removeBackpackItem(std::string itemIn) { player.removeItem(itemIn); }
+   bool searchBackpackItem(std::string itemIn) { return player.searchItem(itemIn); }
+   void pickupItem(std::string itemIn) { player.addItem(itemIn); }
    ~Beehive();
 };
 

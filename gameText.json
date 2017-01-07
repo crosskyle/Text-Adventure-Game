@@ -1,6 +1,6 @@
 {
    "menu": "\n(M)ove.\n(P)ick up an item.\n(D)eposit a pollen grain.\n(S)how backpack.\n(L)earn how to win.\n(Q)uit.\n",
-   "start": "Welcome to the beehive! You are an ant trying to find honey to bring back to your starving ant colony. You have carried pollen along as a gift to be given to the bees in each room so that they will help you find honey in return. You only have 10 pollen grains and 20 moves. Use your resources wisely. Your journey starts in the arcade room.\n \nFirst hint: the dining hall has some jelly that only royalty eats. Good luck!\n",
+   "start": "Welcome to the beehive! You are an ant trying to find honey to bring back to your starving ant colony. You have carried pollen along as a gift to be given to the bees in each room so that they will help you find honey in return. You only have 10 pollen grains and 20 moves. Use your resources wisely. Your journey starts in the arcade room.\n \nOverheard from some bees close by: 'The queen is in dire need of royal jelly.'\n",
    "choose direction": "\nWhich direction would you like to move?\n(N)orth, (S)outh, (E)ast, or (W)est?\n",
    "lost": {
       "1": "\nToo many moves. A bear ate the whole beehive!\n",
@@ -41,5 +41,29 @@
    },
    "cheat": "\nDISCLAIMER: This tells you how to win.\nGo to the dining hall. Deposit one pollen grain. Then pickup an item there. Next go to the dance room and deposit two pollen grains. The queen lair will become unlocked. Next go to the queen lair. The queen gave you a key. Go to the graveyard. Your key opened the worker bee lair. Next go east to the worker bee lair. You were given honey. Go north to the brood lair to win.\n",
    "won": "\n'Thanks for the honey!'\nYou saved your ant colony!!!\n",
-   "displayWorld": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|_____  ____|____  _____|\n|           |           |\n|Dance Room   Graveyard |\n|_____  ____|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n"
+   "displayWorld": {
+      "start": {
+      "Arcade": " _______________________\n|           |           |\n|     X       Brood lair|\n|_____  ____|____  _____|\n|           |           |\n|Dance Room   Graveyard |\n|_____  ____|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+      "Brood lair": " _______________________\n|           |           |\n|   Arcade       X      |\n|_____  ____|____  _____|\n|           |           |\n|Dance Room   Graveyard |\n|_____  ____|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+      "Dance room": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|_____  ____|____  _____|\n|           |           |\n|     X       Graveyard |\n|_____  ____|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+      "Graveyard": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|_____  ____|____  _____|\n|           |           |\n|Dance Room      X      |\n|_____  ____|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+      "Queen lair": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|_____  ____|____  _____|\n|           |           |\n|Dance Room   Graveyard |\n|_____  ____|____  _____|\n|           |           |\n|     X      Dining hall|\n|___________|___________|\n",
+      "Dining hall": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|_____  ____|____  _____|\n|           |           |\n|Dance Room   Graveyard |\n|_____  ____|____  _____|\n|           |           |\n|Queen lair      X      |\n|___________|___________|\n"
+      },
+      "bear ate": {
+         "Arcade": " _______________________\n|           |           |\n|     X       Brood lair|\n|___________|____  _____|\n            |           |\n            | Graveyard |\n ___________|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+         "Brood lair": " _______________________\n|           |           |\n|   Arcade       X      |\n|___________|____  _____|\n            |           |\n            | Graveyard |\n ___________|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+         "Graveyard": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|___________|____  _____|\n            |           |\n            |     X     |\n ___________|____  _____|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+         "Queen lair": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|___________|____  _____|\n            |           |\n            | Graveyard |\n ___________|____  _____|\n|           |           |\n|     X      Dining hall|\n|___________|___________|\n",
+         "Dining hall": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|___________|____  _____|\n            |           |\n            | Graveyard |\n ___________|____  _____|\n|           |           |\n|Queen lair      X      |\n|___________|___________|\n"
+      },
+      "key used": {
+         "Arcade": " _______________________\n|           |           |\n|      X      Brood lair|\n|___________|____  _____|___________\n            |           |           |\n            | Graveyard  Worker bees|\n ___________|____  _____|___________|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+         "Brood lair": " _______________________\n|           |           |\n|   Arcade        X     |\n|___________|____  _____|___________\n            |           |           |\n            | Graveyard  Worker bees|\n ___________|____  _____|___________|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+         "Graveyard": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|___________|____  _____|___________\n            |           |           |\n            |     X      Worker bees|\n ___________|____  _____|___________|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n",
+         "Queen lair": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|___________|____  _____|___________\n            |           |           |\n            | Graveyard  Worker bees|\n ___________|____  _____|___________|\n|           |           |\n|     X      Dining hall|\n|___________|___________|\n",
+         "Dining hall": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|___________|____  _____|___________\n            |           |           |\n            | Graveyard  Worker bees|\n ___________|____  _____|___________|\n|           |           |\n|Queen lair       X     |\n|___________|___________|\n",
+         "Worker bee lair": " _______________________\n|           |           |\n|   Arcade    Brood lair|\n|___________|____  _____|___________\n            |           |           |\n            | Graveyard       X     |\n ___________|____  _____|___________|\n|           |           |\n|Queen lair  Dining hall|\n|___________|___________|\n"
+      }
+   }
 }

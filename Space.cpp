@@ -14,7 +14,7 @@
 
 #include "Space.hpp"
 
-Space::Space(string spaceNameIn, string itemIn)
+Space::Space(std::string spaceNameIn, std::string itemIn)
 {
    east = NULL;
    west = NULL;
@@ -25,12 +25,12 @@ Space::Space(string spaceNameIn, string itemIn)
    deposit = false;
 }
 
-string Space::getName()
+std::string Space::getName()
 {
    return spaceName;
 }
 
-string Space::getItem()
+std::string Space::getItem()
 {
    return item;
 }

@@ -17,7 +17,7 @@
 class DiningSpace : public Space
 {
 public:
-   DiningSpace(string spaceNameIn, string itemIn) : Space(spaceNameIn, itemIn) {}
+   DiningSpace(std::string spaceNameIn, std::string itemIn) : Space(spaceNameIn, itemIn) {}
    bool depositPollen();
 };
 

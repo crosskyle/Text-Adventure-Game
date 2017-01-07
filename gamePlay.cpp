@@ -1,32 +1,53 @@
+/*********************************************************************
+ ** Program Filename: gamePlay.cpp
+ ** Author: Kyle Cross
+ ** Date: 1-3-2017
+ ** Description: Runs a maze game where an ant is tasked with finding honey
+ ** to save an ant colony. A json file is used to read the game's text to the
+ ** screen. The user has the options to move, pick up items, deposit pollen,
+ ** and show picked up items that are in a backpack vector. The user navigates a linked
+ ** structure that is manipulated in a 'Beehive' class. The Beehive class contains
+ ** different spaces and the player that navigates the spaces in the game world.
+ ** Input: User chooses between a menu of options. Inputs direction of moves.
+ ** Output: The state of the game is displayed.
+ *********************************************************************/
 
 
 #include "gamePlay.hpp"
 
 
+/*********************************************************************
+ ** Function: string parse(string)
+ ** Description: Parses spaces in a json file so that the text reads correctly.
+ *********************************************************************/
 
-string GamePlay::parse(string stringIn) {
-   string s = stringIn;
+std::string GamePlay::parse(std::string stringIn) {
+   std::string s = stringIn;
    s.erase(remove(s.begin(), s.end(), '\"'), s.end());
    
    return s;
 }
 
 
+/*********************************************************************
+ ** Function: char getMenuOption(char, json)
+ ** Description: Allows user to choose a menu option during gameplay.
+ *********************************************************************/
 
 char GamePlay::getMenuOption(char &choice, json j) {
    //Menu option is chosen
-   cout << parse(j["menu"]);
-   cin.clear();
-   cin >> choice;
+   std::cout << parse(j["menu"]);
+   std::cin.clear();
+   std::cin >> choice;
    choice = toupper(choice);
    
    //Input validation
-   while (!cin || (choice != 'M' && choice != 'P' && choice != 'D' && choice != 'S'
+   while (!std::cin || (choice != 'M' && choice != 'P' && choice != 'D' && choice != 'S'
                    && choice != 'L' && choice != 'Q'))
    {
-      cout << "Enter a valid character." << endl;
-      cin.ignore(10000,'\n');
-      cin >> choice;
+      std::cout << "Enter a valid character." << std::endl;
+      std::cin.ignore(10000,'\n');
+      std::cin >> choice;
       choice = toupper(choice);
    }
    
@@ -34,18 +55,45 @@ char GamePlay::getMenuOption(char &choice, json j) {
 }
 
 
+/*********************************************************************
+ ** Function: char getDirection(char, json)
+ ** Description: Allows user to move in one of four directions during gameplay.
+ *********************************************************************/
 
 char GamePlay::getDirection(char &move, json j) {
    do
    {
-      cin.ignore(10000,'\n');
-      cout << parse(j["choose direction"]);
-      cin >> move;
+      std::cin.ignore(10000,'\n');
+      std::cout << parse(j["choose direction"]);
+      std::cin >> move;
       move = toupper(move);
       
-   } while (!cin || (move != 'N' && move != 'S' && move != 'E' && move != 'W'));
+   } while (!std::cin || (move != 'N' && move != 'S' && move != 'E' && move != 'W'));
 
    return move;
+}
+
+
+/*********************************************************************
+ ** Function: void displayLocation(json)
+ ** Description: Display's player location.
+ *********************************************************************/
+
+void GamePlay::displayLocation(json j) {
+   std::cout << "\nCurrent location: " << play.getLocation() << std::endl;
+   
+   if (play.getKeyUsed())
+   {
+      std::cout << parse(j["displayWorld"]["key used"][play.getLocation()]);
+   }
+   else if (play.getBearAte())
+   {
+      std::cout << parse(j["displayWorld"]["bear ate"][play.getLocation()]);
+   }
+   else
+   {
+      std::cout << parse(j["displayWorld"]["start"][play.getLocation()]);
+   }
 }
 
 
@@ -61,14 +109,14 @@ char GamePlay::getDirection(char &move, json j) {
 
 void GamePlay::playGame() {
    //Read in game text file
-   ifstream gameText("/Users/kylecross/Desktop/text-adventure-game/text-adventure-game/gameText.json");
+   std::ifstream gameText("gameText.json");
    json j;
    gameText >> j;
    
    //Starting instructions
-   cout << parse(j["start"]);
-   cout << parse(j["displayWorld"]);                     //Prints world map
-   cout << parse(j["arcade"]["4"]);                      //Start in arcade room
+   std::cout << parse(j["start"]);
+   std::cout << parse(j["displayWorld"]["start"]["Arcade"]);   //Prints world map
+   std::cout << parse(j["arcade"]["4"]);                       //Start in arcade room
    
    //Choose menu option
    getMenuOption(choice, j);
@@ -81,79 +129,82 @@ void GamePlay::playGame() {
       /*************************/
       if (choice == 'M')
       {
-         cout << parse(j["displayWorld"]);
-         
+         //Get direction player would like to move
          getDirection(move, j);
          
          //Game ends if too many moves taken
          if (play.move(move))
          {
-            cout << parse(j["lost"]["1"]);
+            std::cout << parse(j["lost"]["1"]);
             break;
          }
-         cout << "\nCurrent location: " << play.getLocation() << endl;
+         
+         //Display current location of player
+         displayLocation(j);
          
          //Game is lost if bug spray is added to backpack
          if (play.searchBackpackItem("bug spray"))
          {
-            cout << parse(j["lost"]["2"]);
+            std::cout << parse(j["lost"]["2"]);
             break;
          }
          
          //Bee makes a wager in arcade
          if (play.getLocation() == "Arcade" && !play.getQueenDoor())
          {
-          cout << parse(j["arcade"]["1"]);
+          std::cout << parse(j["arcade"]["1"]);
          }
          
          //Bee makes wager in dining hall
          else if (play.getLocation() == "Dining hall" && !play.getBearAte())
          {
-            cout << parse(j["dining hall"]["1"]);
+            std::cout << parse(j["dining hall"]["1"]);
          }
          
          //Bee makes wager in dance room
          else if (play.getLocation() == "Dance room" && !play.getQueenDoor())
          {
-            cout << parse(j["dance room"]["1"]);
+            std::cout << parse(j["dance room"]["1"]);
          }
          
          //Queen gives player a key
          else if (play.getLocation() == "Queen lair" && play.searchBackpackItem("royal jelly")
                   && !play.getBearAte())
          {
-            cout << parse(j["queen lair"]["1"]);
+            std::cout << parse(j["queen lair"]["1"]);
             
             play.removeBackpackItem("royal jelly");         //Item removed from backpack
             play.pickupItem("key");                         //Key is added to backpack
             play.bearEatsSpace();                           //Dance room is deleted from memory
+            std::cout << parse(j["displayWorld"]["bear ate"][play.getLocation()]);
          }
          
          //Queen makes a hint
          else if (play.getLocation() == "Queen lair" && !play.getBearAte())
          {
-            cout << parse(j["queen lair"]["2"]);
+            std::cout << parse(j["queen lair"]["2"]);
          }
          
          //A new space is created
          else if (play.getLocation() == "Graveyard" && play.searchBackpackItem("key") && !play.getKeyUsed())
          {
-            cout << parse(j["graveyard"]["1"]);
+            std::cout << parse(j["graveyard"]["1"]);
             play.graveyardSecretDoor();                     //Worker bee lair is created
             play.removeBackpackItem("key");                 //Key removed from backpack
+            std::cout << parse(j["displayWorld"]["key used"][play.getLocation()]);
          }
          
          //Player is given honey
          else if (play.getLocation() == "Worker bee lair")
          {
-            cout << parse(j["worker bee lair"]["1"]);
+            std::cout << parse(j["worker bee lair"]["1"]);
             play.pickupItem("honey");                       //Honey is added to backpack
          }
          
          //You won the game
          else if (play.getLocation() == "Brood lair" && play.searchBackpackItem("honey"))
          {
-            cout << parse(j["won"]);
+            std::cout << parse(j["won"]);
             break;
          }
          
@@ -161,7 +212,7 @@ void GamePlay::playGame() {
          else if ((play.getLocation() == "Brood lair" || play.getLocation() == "Graveyard"
                    || play.getLocation() == "Queen lair") && !play.getBearAte())
          {
-            cout << parse(j["wager"]["1"]);
+            std::cout << parse(j["wager"]["1"]);
          }
       }
       
@@ -175,7 +226,7 @@ void GamePlay::playGame() {
          //User is given a hint
          if (play.getLocation() == "Dining hall" && !play.getQueenDoor() && !play.getBearAte())
          {
-            cout << parse(j["hint"]["1"]);
+            std::cout << parse(j["hint"]["1"]);
          }
       }
       
@@ -186,25 +237,25 @@ void GamePlay::playGame() {
       {
          play.dropPollen();                                 //Pollen is deposited
          
-         //Notified if you have opend the Queen lair
+         //Notified if you have opened the Queen lair
          if (play.getLocation() == "Dance room" && play.unlockQueenLair())
          {
-            cout << parse(j["dance room"]["2"]);
+           std::cout << parse(j["dance room"]["2"]);
          }
          
          //Given hint to pick up jelly
          else if (play.getLocation() == "Dining hall")
          {
-            cout << parse(j["dining hall"]["2"]);
+            std::cout << parse(j["dining hall"]["2"]);
          }
          
          //Notified if you have opened secret passages from arcade
          else if (play.getLocation() == "Arcade" && !play.getQueenDoor())
          {
             if (play.arcadeSecretPassages())
-               cout << parse(j["arcade"]["2"]);
+               std::cout << parse(j["arcade"]["2"]);
             else
-               cout << parse(j["arcade"]["3"]);
+               std::cout << parse(j["arcade"]["3"]);
          }
          
          //Notified if you were given a key to unlock the worker bee lair
@@ -213,30 +264,31 @@ void GamePlay::playGame() {
          {
             if (play.keyToWorkerBeeLair())
             {
-               cout << parse(j["wager"]["2"]);
+               std::cout << parse(j["wager"]["2"]);
                play.pickupItem("key");                      //Key added to backpack
                
                //Your key is used if you're in the graveyard
                if (play.getLocation() == "Graveyard")
                {
-                  cout << parse(j["graveyard"]["1"]);
+                  std::cout << parse(j["graveyard"]["1"]);
                   play.graveyardSecretDoor();               //Worker bee lair is created
                   play.removeBackpackItem("key");           //Key removed from backpack
                }
+               std::cout << parse(j["displayWorld"]["key used"][play.getLocation()]);
             }
-            else if (!play.getBearAte())
+            else if (!play.getBearAte() && !(play.getLocation() == "Queen lair"))
             {
-               cout << parse(j["wager"]["3"]);
+               std::cout << parse(j["wager"]["3"]);
             }
          }
          
          //Game is lost if all pollen is gone
          if (play.getPollenCount() < 1)
          {
-            cout << parse(j["lost"]["3"]);
+            std::cout << parse(j["lost"]["3"]);
             break;
          }
-         cout << "\nPollen left: " << play.getPollenCount() << endl;
+         std::cout << "\nPollen left: " << play.getPollenCount() << std::endl;
       }
       
       /**********************************/
@@ -252,7 +304,7 @@ void GamePlay::playGame() {
       /*********************************/
       else if ( choice == 'L')
       {
-         cout << parse(j["cheat"]);
+         std::cout << parse(j["cheat"]);
       }
       
       //User chooses menu option

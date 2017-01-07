@@ -16,7 +16,7 @@
 class ArcadeSpace : public Space
 {
 public:
-   ArcadeSpace(string spaceNameIn, string itemIn) : Space(spaceNameIn, itemIn) {}
+   ArcadeSpace(std::string spaceNameIn, std::string itemIn) : Space(spaceNameIn, itemIn) {}
    bool depositPollen();
 };
 
