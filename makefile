@@ -1,5 +1,5 @@
 #Kyle Cross
-#Final Project CS 162
+#text-adventure-game
 
 all: game
 
